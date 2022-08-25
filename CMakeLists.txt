@@ -16,6 +16,7 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
 	"srv/ChooseUav.srv"
   "msg/PoseEuler.msg"
+  "msg/PoseError.msg"
   DEPENDENCIES geometry_msgs std_msgs
 )
 

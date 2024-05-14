@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(mbzirc_aerial_manipulation_msgs)
+project(arm_api2_msgs)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -10,15 +10,12 @@ find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 find_package(std_msgs REQUIRED)
-find_package(geometry_msgs REQUIRED)
+#find_package(geometry_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-	"srv/ChooseUav.srv"
   "srv/ChangeState.srv"
-  "msg/PoseEuler.msg"
-  "msg/PoseError.msg"
-  DEPENDENCIES geometry_msgs std_msgs
+  DEPENDENCIES std_msgs
 )
 
 if(BUILD_TESTING)
@@ -32,5 +29,5 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-ament_export_dependencies(rosidl_default_runtime std_msgs geometry_msgs)
+ament_export_dependencies(rosidl_default_runtime std_msgs)
 ament_package()

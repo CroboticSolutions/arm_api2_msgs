@@ -10,12 +10,14 @@ find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 #find_package(geometry_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/ChangeState.srv"
-  DEPENDENCIES std_msgs
+  "msg/CartesianWaypoints.msg"
+  DEPENDENCIES std_msgs geometry_msgs
 )
 
 if(BUILD_TESTING)
@@ -29,5 +31,5 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-ament_export_dependencies(rosidl_default_runtime std_msgs)
+ament_export_dependencies(rosidl_default_runtime std_msgs geometry_msgs)
 ament_package()

@@ -17,6 +17,7 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/ChangeState.srv"
+  "srv/SetStringParam.srv"
   "srv/SetVelAcc.srv"
   "msg/CartesianWaypoints.msg"
   "action/GripperControl.action"

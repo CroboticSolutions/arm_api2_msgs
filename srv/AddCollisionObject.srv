@@ -1,0 +1,25 @@
+# Service to add collision object to planning scene
+# Object ID
+string id
+
+# Primitive type: BOX=1, SPHERE=2, CYLINDER=3
+uint8 primitive_type
+uint8 BOX=1
+uint8 SPHERE=2
+uint8 CYLINDER=3
+
+# Dimensions (meaning depends on type):
+# BOX: [x, y, z] dimensions
+# SPHERE: [radius]
+# CYLINDER: [height, radius]
+float64[] dimensions
+
+# Position in planning frame
+geometry_msgs/Point position
+
+# Orientation (optional, defaults to identity)
+geometry_msgs/Quaternion orientation
+
+---
+bool success
+string message

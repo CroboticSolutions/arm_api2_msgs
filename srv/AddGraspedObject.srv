@@ -1,0 +1,5 @@
+# Grasped Object req
+moveit_msgs/CollisionObject grasped_object
+moveit_msgs/AttachedCollisionObject attach_object 
+---
+bool success

@@ -1,0 +1,4 @@
+# Set path constraints for next plan. Use current joint position if position is NaN.
+moveit_msgs/JointConstraint[] joint_constraints
+---
+bool success

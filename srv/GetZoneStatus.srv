@@ -1,0 +1,6 @@
+string zone_id
+---
+string current_owner
+bool is_available
+bool success
+string message

@@ -1,0 +1,5 @@
+string zone_id
+string robot_id
+---
+bool success
+string message

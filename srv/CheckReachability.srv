@@ -1,0 +1,27 @@
+# Pre-flight reachability/feasibility check for a pose target.
+# Implemented by arm_api2 (moveit2_simple_iface) using IK + planning-scene
+# collision check against the current robot state. Designed to be cheap
+# (~50 ms) so the GUI can batch-check several grasp candidates before
+# committing to a plan, eliminating the 5 s × N OMPL timeout loop.
+
+# Pose to check, in PLANNING_FRAME (or any frame TF can resolve to it).
+geometry_msgs/PoseStamped pose
+
+# Optional: number of IK seeds to try. 0 => server default.
+uint8 ik_attempts
+
+# Optional: per-attempt IK timeout in seconds. 0.0 => server default.
+float64 ik_timeout_sec
+---
+# True if at least one collision-free IK solution exists for `pose`.
+bool reachable
+
+# True if the resolved goal state collides (self or environment) with the
+# current planning scene. When `reachable == true`, this is always false.
+bool in_collision
+
+# How many distinct IK seeds produced a valid solution (capped to ik_attempts).
+uint8 ik_solutions_found
+
+# Human-readable explanation; safe to surface in the GUI.
+string reason

@@ -1,0 +1,8 @@
+geometry_msgs/PoseStamped pose
+uint8 ik_attempts
+float64 ik_timeout_sec
+---
+bool reachable
+bool in_collision
+uint8 ik_solutions_found
+string reason

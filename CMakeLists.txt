@@ -31,6 +31,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/CartesianWaypoints.msg"
   "msg/PlanStatus.msg"
   "srv/CheckReachability.srv"
+  "srv/CheckCartesianPath.srv"
   "action/GripperControl.action"
   "action/MoveCartesian.action"
   "action/MoveCartesianPath.action"

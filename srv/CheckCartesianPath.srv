@@ -1,0 +1,41 @@
+# Validate a straight Cartesian segment without executing it.
+# The server resolves both poses into the arm planning frame, solves IK for
+# start_pose, then interpolates start_pose -> target_pose with MoveIt state
+# validity checks. A fraction below 1.0 means MoveIt found only a partial path.
+
+geometry_msgs/PoseStamped start_pose
+geometry_msgs/PoseStamped target_pose
+
+# 0.0 => server default (2 cm).
+float64 eef_step
+
+# Optional: number of start-pose IK seeds to try. 0 => server default.
+uint8 ik_attempts
+
+# Optional: per-attempt IK timeout in seconds. 0.0 => server default.
+float64 ik_timeout_sec
+
+# False (default) validates bounds + planning-scene collisions along the path.
+bool ignore_collisions
+
+# When true, interpolate the path from EVERY distinct valid start IK solution
+# found (not only the first): `fraction` then reports the WORST one. Use this
+# when a separate joint-space plan moves the arm to start_pose first — the
+# planner may settle in a different configuration than the single IK seed the
+# default check would use, so only a worst-case pass guarantees the descent.
+bool check_all_start_configs
+---
+bool full_path
+float64 fraction
+uint32 trajectory_points
+
+bool start_reachable
+bool in_collision
+uint8 start_ik_solutions_found
+
+# Number of distinct start configurations the path was interpolated from
+# (1 unless check_all_start_configs was set).
+uint8 start_configs_checked
+
+# Human-readable explanation; safe to surface in the GUI.
+string reason
